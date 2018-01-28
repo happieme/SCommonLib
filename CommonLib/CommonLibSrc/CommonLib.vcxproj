@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3C3A1125-F50F-4FD4-9529-792A5BB76066}</ProjectGuid>
+    <RootNamespace>CommonLib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.26430.15</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>set srcDir=$(TargetDir)..\..\..\Third-Party
+set dstDir=$(TargetDir)
+
+xcopy /y /F /S %25srcDir%25\zlibdll\zdll.lib %25dstDir%25
+xcopy /y /F /S %25srcDir%25\zlibdll\zlib1.dll %25dstDir%25
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;COMMONLIB_EXPORTS;SWINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>zdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(TargetDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>set SrcDir=$(ProjectDir)
+set SCommon=%25SrcDir%25SCommon\*.h
+set SString=%25SrcDir%25SString\*.h
+set SSystem=%25SrcDir%25SSystem\SSystem.h
+set   STime=%25SrcDir%25STime\STime.h
+set   SJson=%25SrcDir%25SJson\*.h
+set   SFile=%25SrcDir%25SFile\*.h
+
+set DstDir=$(ProjectDir)..\..\LibHeader
+del /Q /F /S  %25DstDir%25\SCommon\*.*
+del /Q /F /S  %25DstDir%25\SString\*.*
+del /Q /F /S  %25DstDir%25\STime\*.*
+del /Q /F /S  %25DstDir%25\SFile\*.*
+del /Q /F /S  %25DstDir%25\SJson\*.*
+del /Q /F /S  %25DstDir%25\SSystem\*.*
+del /Q /F /S  %25DstDir%25\SGzip\*.*
+
+set Copy=xcopy /y /S /F
+%25Copy%25 %25SrcDir%25SCommon\SCommon.h %25DstDir%25\SCommon\
+%25Copy%25 %25SrcDir%25SCommon\SIOStd.h %25DstDir%25\SCommon\
+%25Copy%25 %25SString%25 %25DstDir%25\SString\
+%25Copy%25 %25STime%25   %25DstDir%25\STime\
+%25Copy%25 %25SFile%25   %25DstDir%25\SFile\
+%25Copy%25 %25SJson%25   %25DstDir%25\SJson\
+%25Copy%25 %25SSystem%25 %25DstDir%25\SSystem\
+%25Copy%25 %25SrcDir%25SGZip\SGZip.h %25DstDir%25\SGZip\
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>set SrcDir=$(SolutionDir)..\..\Third-Party
+xcopy  %25SrcDir%25\MySqlLib\*  $(TargetDir) /Y
+xcopy  %25SrcDir%25\ZLibDLL\zlib1.dll $(TargetDir) /Y
+xcopy  %25SrcDir%25\ZLibDLL\zdll.lib $(TargetDir) /Y
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;COMMONLIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>zdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(TargetDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>:rem --------------------------------------------- Copy to CommonHeader
+set SrcDir=$(ProjectDir)
+set SCommon=%25SrcDir%25SCommon\*.h
+set SString=%25SrcDir%25SString\*.h
+set SSystem=%25SrcDir%25SSystem\SSystem.h
+set   STime=%25SrcDir%25STime\STime.h
+set   SJson=%25SrcDir%25SJson\*.h
+set   SFile=%25SrcDir%25SFile\*.h
+
+set DstDir=$(SolutionDir)..\LibHeader
+set Copy=xcopy /y /S /F
+%25Copy%25 %25SrcDir%25SCommon\SCommon.h %25DstDir%25\SCommon\
+%25Copy%25 %25SrcDir%25SCommon\SIOStd.h %25DstDir%25\SCommon\
+%25Copy%25 %25SString%25 %25DstDir%25\SString\
+%25Copy%25 %25STime%25   %25DstDir%25\STime\
+%25Copy%25 %25SFile%25   %25DstDir%25\SFile\
+%25Copy%25 %25SJson%25   %25DstDir%25\SJson\
+%25Copy%25 %25SSystem%25 %25DstDir%25\SSystem\
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DllMain.cpp" />
+    <ClCompile Include="SCommon\SClib.cpp" />
+    <ClCompile Include="SCrypt\SBase64.cpp" />
+    <ClCompile Include="SCrypt\SCrypt.cpp" />
+    <ClCompile Include="SFile\SConfig.cpp" />
+    <ClCompile Include="SFile\SFile.cpp" />
+    <ClCompile Include="SFile\SLog.cpp" />
+    <ClCompile Include="SGzip\SGZip.cpp" />
+    <ClCompile Include="SJson\SJson.cpp" />
+    <ClCompile Include="SString\SConvert.cpp" />
+    <ClCompile Include="SString\StrImg.cpp" />
+    <ClCompile Include="SString\String.cpp" />
+    <ClCompile Include="SSystem\SSystem.cpp" />
+    <ClCompile Include="STime\STime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SCommon\SClib.h" />
+    <ClInclude Include="SCommon\SCommon.h" />
+    <ClInclude Include="SCommon\SIOStd.h" />
+    <ClInclude Include="SCrypt\SCrypt.h" />
+    <ClInclude Include="SFile\SConfig.h" />
+    <ClInclude Include="SFile\SFile.h" />
+    <ClInclude Include="SFile\SLog.h" />
+    <ClInclude Include="SGzip\SGZip.h" />
+    <ClInclude Include="SJson\SJson.h" />
+    <ClInclude Include="SString\SConvert.h" />
+    <ClInclude Include="SString\StrImg.h" />
+    <ClInclude Include="SString\String.h" />
+    <ClInclude Include="SString\SymbolConstant.h" />
+    <ClInclude Include="SSystem\SSystem.h" />
+    <ClInclude Include="STime\STime.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

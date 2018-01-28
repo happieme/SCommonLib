@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestCommonLib", "TestCommonLibSrc\TestCommonLib.vcxproj", "{45697905-998F-4D8B-8C06-F604A4543060}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066} = {3C3A1125-F50F-4FD4-9529-792A5BB76066}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommonLib", "..\CommonLib\CommonLibSrc\CommonLib.vcxproj", "{3C3A1125-F50F-4FD4-9529-792A5BB76066}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		MinSizeRel|Win32 = MinSizeRel|Win32
+		MinSizeRel|x64 = MinSizeRel|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45697905-998F-4D8B-8C06-F604A4543060}.Debug|Win32.ActiveCfg = Debug|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.Debug|Win32.Build.0 = Debug|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.Debug|x64.ActiveCfg = Debug|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.Debug|x64.Build.0 = Debug|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.MinSizeRel|Win32.Build.0 = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.MinSizeRel|x64.ActiveCfg = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.MinSizeRel|x64.Build.0 = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.Release|Win32.ActiveCfg = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.Release|Win32.Build.0 = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.Release|x64.ActiveCfg = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.RelWithDebInfo|x64.ActiveCfg = Release|Win32
+		{45697905-998F-4D8B-8C06-F604A4543060}.RelWithDebInfo|x64.Build.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Debug|Win32.Build.0 = Debug|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Debug|x64.ActiveCfg = Debug|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Debug|x64.Build.0 = Debug|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.MinSizeRel|Win32.Build.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.MinSizeRel|Win32.Deploy.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.MinSizeRel|x64.ActiveCfg = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.MinSizeRel|x64.Build.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.MinSizeRel|x64.Deploy.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Release|Win32.ActiveCfg = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Release|Win32.Build.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.Release|x64.ActiveCfg = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.RelWithDebInfo|Win32.Deploy.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.RelWithDebInfo|x64.ActiveCfg = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.RelWithDebInfo|x64.Build.0 = Release|Win32
+		{3C3A1125-F50F-4FD4-9529-792A5BB76066}.RelWithDebInfo|x64.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {013FAA38-1609-44F6-B548-5AE55DEEBF1A}
+	EndGlobalSection
+EndGlobal
