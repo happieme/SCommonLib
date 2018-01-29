@@ -197,7 +197,7 @@ namespace smm
 
 	Uint SFile::ReadLine(String& DstStr) // 读 1 行
 	{
-		const Uint size = 1024 * 10;
+		const Uint size = 512;
 		SARRAY(tmp, size);
 		Uint read_count = -1;
 		Uint last_pos = 0;
